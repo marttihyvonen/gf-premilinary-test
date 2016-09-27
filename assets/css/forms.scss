@@ -1,0 +1,26 @@
+input[type="text"], select, .button {
+  padding: 20px;
+  border-radius: 4px;
+  background-color: $input-background-color;
+  border-color: #dadadb;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 16px;
+  color: black;
+}
+
+select {
+  height: 60px;
+  color: #a3a4a4;
+  width: 145px;
+  -webkit-appearance: none;
+  background-image: url("../../assets/img/selectbox-arrow.png");
+  background-repeat: no-repeat;
+  background-size: 13px 25px;
+  background-position: right 10px center;
+}
+
+select option {
+  text-align: center;
+
+}

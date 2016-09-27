@@ -1,0 +1,13 @@
+$header-height: 75px;
+
+#header {
+  height: $header-height;
+  background-color: $highlight-color;
+}
+
+#logo {
+  top: 25px;
+  left: 20px;
+  height: 30px;
+  position: absolute;
+}

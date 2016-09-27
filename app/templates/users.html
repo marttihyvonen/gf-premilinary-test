@@ -1,0 +1,74 @@
+<div class="container">
+
+	<h1>Add a person</h1>
+	
+	<div class="add-new-person-container">
+		<form ng-submit="addUser()">
+			
+			<input class="user-name" type="text" placeholder="Name" ng-model="name" required /> 
+			
+			<select ng-model="gender" ng-init="gender=''" required>
+				<option value="">Gender</option>
+				<option>Male</option>
+				<option>Female</option>
+			</select>
+			
+			
+			<select ng-model="age" ng-init="age=''" required>
+				<option value="">Age</option>
+				<option ng-repeat="age in age_range">{{age}}</option>
+			</select>
+			
+			<input type="submit" class="button add-new-person"  value="" />
+			
+		</form>
+	</div>
+	
+	<table class="users">
+		<tr>
+			<th><a href="#/" ng-click="sortUsersBy('name')"><span>Name</span></a></th>
+			<th><a href="#/" ng-click="sortUsersBy('gender')"><span>Gender</span></a></th>
+			<th><a href="#/" ng-click="sortUsersBy('age')"><span>Age</span></a></th>
+		</tr>
+		
+		<tr class="user" dir-paginate="user in users | itemsPerPage:20">
+			<td>
+				<span ng-hide="user.edit_mode" ng-click="editUser(user)">{{user.name}}</span>
+				<input type="text" ng-show="user.edit_mode" ng-model="user.name" />
+			</td>
+			
+			<td>
+				<span ng-hide="user.edit_mode">{{user.gender}}</span>
+				<select ng-show="user.edit_mode" ng-model="user.gender">
+					<option>Female</option>
+					<option>Male</option>
+				</select>
+			</td>
+			
+			<td>
+				<span ng-hide="user.edit_mode">{{user.age}}</span>
+				<select ng-show="user.edit_mode" ng-model="user.age">
+					<option ng-repeat="age in age_range">{{age}}</option>
+				</select>
+			</td>
+			
+			<td>
+				<div class="actions">
+					<span class="edit-user" ng-class="{active: user.edit_mode}" ng-click="editUser(user)"></span>
+					<div class="seperator"></div>
+					<span class="remove-user" ng-click="deleteUser(user)" /></span>
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	
+	<modal ng-show="showModal">
+      Any additional data / buttons
+  	</modal>
+  	
+  	<div class="modal-mask" ng-show="showModal" ng-click="hideModal()"></div>
+	
+	<dir-pagination-controls direction-links="false" template-url="app/directives/dirPagination/dirPagination.tpl.html"></dir-pagination-controls>
+
+</div>
