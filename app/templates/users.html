@@ -24,29 +24,29 @@
 		</form>
 	</div>
 	
-	<table class="users">
+	<table class="users sortable">
 		<tr>
-			<th><a href="#/" ng-click="sortUsersBy('name')"><span>Name</span></a></th>
-			<th><a href="#/" ng-click="sortUsersBy('gender')"><span>Gender</span></a></th>
-			<th><a href="#/" ng-click="sortUsersBy('age')"><span>Age</span></a></th>
+			<th class="name"><a href="#/" ng-click="sortUsersBy('name')" ng-class="{'active': sortType == 'name', 'reverse': sortReverse}" ><span>Name</span></a></th>
+			<th class="gender"><a href="#/" ng-click="sortUsersBy('gender')"  ng-class="{'active': sortType == 'gender', 'reverse': sortReverse}"><span>Gender</span></a></th>
+			<th class="age"><a href="#/" ng-click="sortUsersBy('age')" ng-class="{'active': sortType == 'age', 'reverse': sortReverse}"><span>Age</span></a></th>
 		</tr>
 		
 		<tr class="user" dir-paginate="user in users | itemsPerPage:20">
-			<td>
+			<td class="name">
 				<span ng-hide="user.edit_mode" ng-click="editUser(user)">{{user.name}}</span>
 				<input type="text" ng-show="user.edit_mode" ng-model="user.name" />
 			</td>
 			
-			<td>
-				<span ng-hide="user.edit_mode">{{user.gender}}</span>
+			<td class="gender">
+				<span ng-hide="user.edit_mode" ng-click="editUser(user)">{{user.gender}}</span>
 				<select ng-show="user.edit_mode" ng-model="user.gender">
 					<option>Female</option>
 					<option>Male</option>
 				</select>
 			</td>
 			
-			<td>
-				<span ng-hide="user.edit_mode">{{user.age}}</span>
+			<td class="age">
+				<span ng-hide="user.edit_mode" ng-click="editUser(user)">{{user.age}}</span>
 				<select ng-show="user.edit_mode" ng-model="user.age">
 					<option ng-repeat="age in age_range">{{age}}</option>
 				</select>

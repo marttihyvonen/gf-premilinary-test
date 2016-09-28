@@ -4,7 +4,7 @@
 
 .actions {
   float: right;
-  width: 91px;
+  width: 100px;
   position: absolute;
   right: 20px;
   top: 25px;
@@ -40,14 +40,6 @@
   background-image: url("../../assets/img/remove-active.png");
 }
 
-.users th span {
-  background-image: url("../../assets/img/sort.png");
-  background-image: url(../../assets/img/sort.png);
-  background-size: 20px 20px;
-  background-position-x: right;
-  background-repeat: no-repeat;
-  padding-right: 35px;
-}
 
 .seperator {
   width: 1px;
@@ -96,36 +88,25 @@
   margin-right: 0;
 }
 
-tr.user td {
-  position: relative;
-  height: 18px;
+
+th.name {
+  width: 400px;
 }
 
-tr.user input[type="text"], tr.user select {
-    border-radius: 0px;
-    background-color: transparent;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-width: 2px;
-    font-family: $primary-font;
-    color: $text-color;
-    font-size: 18px;
-    position: absolute;
-    top: 10px;
-    left: 8px;
+th.gender {
+  width: 180px;
 }
 
-tr.user select {
-  -webkit-appearance: none;
-  border-radius: 0;
-  height: 47px;
-  text-align-last: left;
-  background-image: url("../../assets/img/selectbox-arrow.png");
-  background-repeat: no-repeat;
-  background-size: 13px 25px;
-  background-position: right 10px center;
+td.name input {
+  width: 400px;
+}
+
+td.gender select {
+  width: 215px;
+}
+
+th.age, td.age select {
+  width: 90px;
 }
 
 

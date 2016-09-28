@@ -20,9 +20,9 @@ app.config(function($routeProvider) {
 
 app.controller('UsersController', function($scope, $sce, $location, SweetAlert) {
 	
-	$scope.users = generate_users(100);
+	$scope.users = generatePersons(100);
 	
-	$scope.sortType     = 'name'; // set the default sort type
+	$scope.sortType     = ''; // set the default sort type
   	$scope.sortReverse  = false;
   	
   	$scope.gender = "";
@@ -30,10 +30,11 @@ app.controller('UsersController', function($scope, $sce, $location, SweetAlert) 
   	
   	$scope.addUser = function(name,gender,age) {
   		$scope.users[$scope.users.length] = {"name": $scope.name, "gender": $scope.gender, "age": $scope.age};
-  		SweetAlert.swal({title: "New user added"});
+  		SweetAlert.swal({title: "New person added"});
   	};
   	
   	$scope.deleteUser = function(user) {
+  		
   		SweetAlert.swal({
 		   title: "Remove person",
 		   text: "Are you sure you want to remove this entry?",
@@ -44,8 +45,9 @@ app.controller('UsersController', function($scope, $sce, $location, SweetAlert) 
 		function(isConfirm) { 
 		    if (isConfirm) {
 			    var index = $scope.users.indexOf(user);
-		  		console.log(index);
+			    
 		  		if (index > -1) {
+		  			// remove user, if user found
 		    		$scope.users.splice(index, 1);
 				}
 				
@@ -61,6 +63,7 @@ app.controller('UsersController', function($scope, $sce, $location, SweetAlert) 
   	
   	$scope.sortUsersBy = function(field) {
   		$scope.sortReverse = !$scope.sortReverse;
+  		$scope.sortType = field;
   		$scope.users.sort(function(a,b) {
   			if (a[field] < b[field]) return -1;
   			if (a[field] > b[field]) return 1;
@@ -71,19 +74,7 @@ app.controller('UsersController', function($scope, $sce, $location, SweetAlert) 
   	};
   	
   	
-  	$scope.showModal = false;
-	$scope.buttonClicked = "";
-	$scope.toggleModal = function(btnClicked) {
-		$scope.buttonClicked = btnClicked;
-		$scope.showModal = !$scope.showModal;
-	};
-	
-	$scope.hideModal = function() {
-		$scope.showModal = false;
-	};
-  	
-  	
-  	$scope.age_range = get_age_range();
+  	$scope.age_range = getAgeRange();
   	
 });
 

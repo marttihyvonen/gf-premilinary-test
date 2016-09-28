@@ -1,4 +1,4 @@
-function get_age_range() {
+function getAgeRange() {
 	ages = [];
 	for(var i = 18; i < 100; i++) {
 		ages[ages.length] = i;
@@ -8,43 +8,46 @@ function get_age_range() {
 
 
 
-function generate_users(amount) {
+function generatePersons(amount) {
 	
 	var users = [];
 	
 	for(var i = 0; i < amount; i++) {
-		users[users.length] = random_user();
+		users[users.length] = randomPerson();
 	}
 	
 	return users;
 }
 
-function random_user() {
-	
-	var sexes = ["Male","Female","Not sure"];
-	
-	var first_names = ["John","David","Sarah","Linda"];
-	var surnames = ["Doe","Connor", "McDavid","Smith"];
+function randomPerson() {
+	var sexes = ["Male","Female"];
 	
 	var user = Object();
-	user.id = generate_id();
-	user.name = first_names[random_number_between(0,first_names.length-1)] + " " + 
-		surnames[random_number_between(0,surnames.length-1)];
+	user.id = generateId();
 	
-	user.gender = sexes[random_number_between(0,1)];
-	user.age = random_number_between(18,99).toString();
+	user.gender = sexes[randomNumberBetween(0,1)];
+	
+	if(user.gender == "Female") {
+		user.name = names['female'][randomNumberBetween(0,names['female'].length-1)];
+	} else {
+		user.name = names['male'][randomNumberBetween(0,names['male'].length-1)];
+	}
+	
+	user.name += " " + names['surname'][randomNumberBetween(0,names['surname'].length-1)];
+	
+	user.age = randomNumberBetween(18,99).toString();
 	user.edit_mode = false;
 	
 	return user;
 }
 
 
-function random_number_between(range_start, range_end) {
+function randomNumberBetween(range_start, range_end) {
 	return Math.round((Math.random() * (range_end - range_start) + range_start));
 }
 
 
-function generate_id() {
+function generateId() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
